@@ -1,0 +1,15 @@
+server:
+  port: 9902
+
+spring:
+  dataSource:
+    username: root
+    password: yyn990902
+    url: jdbc:mysql:///yzynDataBase
+  redis:
+    port: 6379
+    host: localhost
+
+logging:
+  level:
+    com.yzyn: debug
