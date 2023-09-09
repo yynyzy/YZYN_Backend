@@ -1,28 +1,29 @@
 package com.yzyn.common.Enum;
 
-public enum ResponseStatus {
-    /**
-     *接口返回枚举定义
-     */
-    public enum RestCodeEnum {
-        SUCCESS("200", "处理成功"),
-        ERROR("500", "系统异常");
+/**
+ * @author yanyinuo
+ */
 
-        private String code;
-        private String msg;
 
-        RestCodeEnum(String code, String msg) {
+public enum CodeStatus {
+    // 接口返回公共类
+    SUCCESS(200, "请求成功"),
+    FAILED(400, "请求失败"),
+    ERROR(500, "系统异常");
+
+    private Integer code;
+    private String msg;
+
+    CodeStatus(Integer code, String msg) {
             this.code = code;
             this.msg = msg;
-        }
-
-        public String getCode() {
-            return code;
-        }
-
-        public String getMsg() {
-            return msg;
-        }
     }
 
+    public Integer getCode() {
+        return code;
+    }
+
+    public String getMsg() {
+        return msg;
+    }
 }

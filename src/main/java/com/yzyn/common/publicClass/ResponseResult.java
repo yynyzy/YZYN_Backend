@@ -1,5 +1,6 @@
-package com.yzyn.common.responseClass;
+package com.yzyn.common.publicClass;
 
+import com.yzyn.common.Enum.CodeStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,26 +17,29 @@ public class ResponseResult <T> {
     private T data;
 
     private static <T> ResponseResult<T> success() {
-        return new ResponseResult<>(200, "success", null);
+        return new ResponseResult<>(CodeStatus.SUCCESS.getCode(), CodeStatus.SUCCESS.getMsg(), null);
     };
-    private static <T> ResponseResult<T> success(T data) {
-        return new ResponseResult<>(200, "success", data);
+    public static <T> ResponseResult<T> success(T data) {
+        return new ResponseResult<>(CodeStatus.SUCCESS.getCode(), CodeStatus.SUCCESS.getMsg(), data);
     };
-    private static <T> ResponseResult<T> success(String message, T data) {
-        return new ResponseResult<T>(200, message, data);
+    public static <T> ResponseResult<T> success(String message, T data) {
+        return new ResponseResult<T>(CodeStatus.SUCCESS.getCode(), message, data);
     };
 
 
-    private static <T> ResponseResult<T> fail() {
-        return new ResponseResult<>(400, "failed", null);
+    public static <T> ResponseResult<T> fail() {
+        return new ResponseResult<>(CodeStatus.FAILED.getCode(), CodeStatus.FAILED.getMsg(), null);
     };
-    private static <T> ResponseResult<T> fail(T data) {
-        return new ResponseResult<>(400, "failed", data);
+    public static <T> ResponseResult<T> fail(T data) {
+        return new ResponseResult<>(CodeStatus.FAILED.getCode(), CodeStatus.FAILED.getMsg(), data);
     };
-    private static <T> ResponseResult<T> fail(String message, T data) {
-        return new ResponseResult<T>(400, message, data);
+    public static <T> ResponseResult<T> fail(String message, T data) {
+        return new ResponseResult<T>(CodeStatus.FAILED.getCode(), message, data);
     };
-    private static <T> ResponseResult<T> fail(Integer code, String message, T data) {
+    public static <T> ResponseResult<T> fail(Integer code, String message) {
+        return new ResponseResult<T>(code, message, null);
+    };
+    public static <T> ResponseResult<T> fail(Integer code, String message, T data) {
         return new ResponseResult<T>(code, message, data);
     };
 }
