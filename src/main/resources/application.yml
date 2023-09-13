@@ -9,6 +9,10 @@ spring:
   redis:
     port: 6379
     host: localhost
+    password: 123456
+
+mybatis-plus:
+  mapper-locations: classpath:com/yzyn/sys/mapper/*.xml
 
 logging:
   level:

@@ -41,4 +41,16 @@ public class UserController {
     public ResponseResult<List<User>> getAllUser() {
         return ResponseResult.success("查询成功", userService.list(null));
     }
+
+    @GetMapping("/info")
+    public ResponseResult<Map<String, Object>> getUserInfo(@RequestParam String token) {
+        Map<String, Object> data = userService.getUserInfo(token);
+        System.out.println(data);
+
+        if (data != null) {
+            return ResponseResult.success("查询成功", data);
+        }
+        return ResponseResult.fail(203, "用户信息失效请重新登陆");
+    }
+
 }
